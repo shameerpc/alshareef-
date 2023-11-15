@@ -1,0 +1,75 @@
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "product nodejs api",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "lint:fix": "./node_modules/.bin/eslint --ignore-path .gitignore . --fix",
+    "test": "jest",
+    "lint:init": "./node_modules/.bin/eslint --init",
+    "coverage": "NODE_ENV=test nyc --reporter=json-summary --reporter=lcov --reporter=text --reporter=html --report-dir=./coverage npm test",
+    "nyc": "nyc --reporter=json-summary --reporter=text --reporter=html --report-dir=./coverage npm run test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run --silent lint:fix",
+      "git add"
+    ]
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.6.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-async-handler": "^1.1.4",
+    "express-fileupload": "^1.3.1",
+    "express-formidable": "^1.2.0",
+    "express-mongo-sanitize": "^2.1.0",
+    "express-rate-limit": "^5.3.0",
+    "express-validator": "^6.15.0",
+    "formidable": "^2.0.1",
+    "helmet": "^3.23.3",
+    "hpp": "^0.2.3",
+    "jsdoc": "^3.6.10",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.4",
+    "mongoose": "^5.9.25",
+    "mongoose-url-slugs": "^1.0.2",
+    "multer": "^1.4.4",
+    "multer-gridfs-storage": "^5.0.2",
+    "nodemailer": "^6.9.7",
+    "nodemon": "^3.0.1",
+    "request-ip": "^3.3.0",
+    "sharp": "^0.30.6",
+    "swagger": "^0.7.5",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.4.0",
+    "uniqid": "^5.4.0",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/sharp": "^0.32.0",
+    "jest": "^27.5.1",
+    "mocha": "^9.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "transform": {
+    "\\.js$": "<rootDir>/node_modules/babel-jest"
+  }
+}
